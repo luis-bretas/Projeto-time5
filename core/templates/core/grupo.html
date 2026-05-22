@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Grupo | Move Together</title>
+
+    <style>
+
+        body{
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+        }
+
+        .navbar{
+            background: #0f172a;
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .container{
+            padding: 30px;
+        }
+
+        .grupo-box{
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-bottom: 25px;
+        }
+
+        .membros{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .membro{
+            background: #e2e8f0;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .ranking{
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-bottom: 25px;
+        }
+
+        table{
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td{
+            padding: 14px;
+            border-bottom: 1px solid #cbd5e1;
+            text-align: left;
+        }
+
+        .chat{
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .mensagem{
+            background: #dbeafe;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .botao{
+            margin-top: 20px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <h2>Move Together</h2>
+        <span>Grupo Alpha</span>
+    </div>
+
+    <div class="container">
+
+        <div class="grupo-box">
+
+            <h1>Grupo Alpha 🏆</h1>
+
+            <p>
+                Grupo focado em desafios de corrida,
+                academia e condicionamento físico.
+            </p>
+
+            <button class="botao">
+                Enviar atividade
+            </button>
+
+            <div class="membros">
+
+                <div class="membro">
+                    <h3>Ana Clara</h3>
+                    <p>1.480 pts</p>
+                </div>
+
+                <div class="membro">
+                    <h3>Você</h3>
+                    <p>1.250 pts</p>
+                </div>
+
+                <div class="membro">
+                    <h3>Theo</h3>
+                    <p>980 pts</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="ranking">
+
+            <h2>Ranking do Grupo</h2>
+
+            <table>
+
+                <tr>
+                    <th>Posição</th>
+                    <th>Membro</th>
+                    <th>Pontos</th>
+                </tr>
+
+                <tr>
+                    <td>1º</td>
+                    <td>Ana Clara</td>
+                    <td>1.480</td>
+                </tr>
+
+                <tr>
+                    <td>2º</td>
+                    <td>Você</td>
+                    <td>1.250</td>
+                </tr>
+
+                <tr>
+                    <td>3º</td>
+                    <td>Theo</td>
+                    <td>980</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+        <div class="chat">
+
+            <h2>Chat do Grupo 💬</h2>
+
+            <div class="mensagem">
+                🏃 Ana Clara enviou uma corrida de 8km.
+            </div>
+
+            <div class="mensagem">
+                🏋️ Theo completou treino de academia.
+            </div>
+
+            <div class="mensagem">
+                🔥 Você ganhou +120 pontos hoje.
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

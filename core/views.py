@@ -8,3 +8,6 @@ def login(request):
 
 def dashboard(request):
     return render(request, 'core/dashboard.html')
+
+def grupo(request):
+    return render(request, 'core/grupo.html')
