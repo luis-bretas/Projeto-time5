@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard | Move Together</title>
+
+    <style>
+        body{
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+        }
+
+        .navbar{
+            background: #0f172a;
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .container{
+            padding: 30px;
+        }
+
+        .cards{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card{
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .card h2{
+            margin: 0;
+            color: #0f172a;
+        }
+
+        .card p{
+            color: #64748b;
+        }
+
+        .ranking, .atividades{
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        table{
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td{
+            padding: 12px;
+            border-bottom: 1px solid #e2e8f0;
+            text-align: left;
+        }
+
+        th{
+            color: #334155;
+        }
+
+        .badge{
+            background: #2563eb;
+            color: white;
+            padding: 6px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <h2>Move Together</h2>
+        <span>Olá, Usuário</span>
+    </div>
+
+    <div class="container">
+
+        <h1>Dashboard</h1>
+        <p>Acompanhe seu desempenho e o progresso do seu grupo.</p>
+
+        <div class="cards">
+            <div class="card">
+                <h2>1.250 pts</h2>
+                <p>Pontuação total</p>
+            </div>
+
+            <div class="card">
+                <h2>8</h2>
+                <p>Atividades enviadas</p>
+            </div>
+
+            <div class="card">
+                <h2>2º lugar</h2>
+                <p>Ranking do grupo</p>
+            </div>
+        </div>
+
+        <div class="ranking">
+            <h2>Ranking do Grupo</h2>
+
+            <table>
+                <tr>
+                    <th>Posição</th>
+                    <th>Usuário</th>
+                    <th>Pontos</th>
+                    <th>Status</th>
+                </tr>
+
+                <tr>
+                    <td>1º</td>
+                    <td>Ana Clara</td>
+                    <td>1.480</td>
+                    <td><span class="badge">Líder</span></td>
+                </tr>
+
+                <tr>
+                    <td>2º</td>
+                    <td>Você</td>
+                    <td>1.250</td>
+                    <td><span class="badge">Competindo</span></td>
+                </tr>
+
+                <tr>
+                    <td>3º</td>
+                    <td>Theo</td>
+                    <td>980</td>
+                    <td><span class="badge">Ativo</span></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="atividades">
+            <h2>Atividades Recentes</h2>
+
+            <p>🏃 Corrida, 5 km, +150 pontos</p>
+            <p>🏋️ Academia, treino completo, +120 pontos</p>
+            <p>🏊 Natação, 40 minutos, +130 pontos</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
