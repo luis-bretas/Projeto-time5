@@ -2,10 +2,64 @@
 <html>
 <head>
     <title>Move Together</title>
+    
+    <style>
+        nav{
+    background-color: #111827;
+    padding: 15px;
+    display: flex;
+    gap: 20px;
+}
+
+nav a{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover{
+    color: #2563eb;
+}
+        @media (max-width: 600px){
+
+    body{
+        padding: 0;
+        margin: 0;
+    }
+
+    nav{
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    nav a{
+        font-size: 18px;
+    }
+
+    h1{
+        font-size: 32px;
+        text-align: center;
+    }
+
+    p{
+        font-size: 18px;
+        text-align: center;
+        padding: 0 15px;
+    }
+}
+
+    </style>
+
+
 </head>
 
 <body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/login/">Login</a>
+</nav>
     <h1>MOVE TOGETHER</h1>
-    <p>Nosso app está vivo 🚀</p>
+    <p>Bem-vindo ao Move Together!</p>
 </body>
 </html>
