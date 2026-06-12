@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from core.views import home, login, dashboard, grupo, perfil
+from core.views import home, login, dashboard, grupo, perfil, ranking
 urlpatterns = [
     path('admin/', admin.site.urls),
 
@@ -13,4 +13,6 @@ urlpatterns = [
     path('grupo/', grupo),
    
     path('perfil/', perfil),
+   
+    path('ranking/', ranking),
 ]

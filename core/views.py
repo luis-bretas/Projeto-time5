@@ -14,3 +14,6 @@ def grupo(request):
 
 def perfil(request):
     return render(request, 'core/perfil.html')
+
+def ranking(request):
+    return render(request, 'core/ranking.html')
