@@ -11,3 +11,6 @@ def dashboard(request):
 
 def grupo(request):
     return render(request, 'core/grupo.html')
+
+def perfil(request):
+    return render(request, 'core/perfil.html')
