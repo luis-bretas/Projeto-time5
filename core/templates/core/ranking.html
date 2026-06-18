@@ -58,26 +58,14 @@
 <div class="ranking-box">
 
     <h1>🏆 Ranking do Grupo</h1>
-
-    <div class="jogador primeiro">
-        <span>1º Theo</span>
-        <span>1500 pts</span>
-    </div>
-
-    <div class="jogador segundo">
-        <span>2º Luís</span>
-        <span>1250 pts</span>
-    </div>
-
-    <div class="jogador terceiro">
-        <span>3º Ana</span>
-        <span>980 pts</span>
-    </div>
-
+    {% for jogador in jogadores %}
     <div class="jogador">
-        <span>4º João</span>
-        <span>700 pts</span>
+        <span>{{ jogador.posicao }} {{ jogador.nome }}</span>
+        <span>{{ jogador.pontos }} pts</span>
     </div>
+{% endfor %}
+
+    
 
 </div>
 
