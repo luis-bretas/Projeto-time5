@@ -16,7 +16,19 @@ def dashboard(request):
     return render(request, 'core/dashboard.html')
 
 def grupo(request):
-    return render(request, 'core/grupo.html')
+
+    membros = [
+        "Theo",
+        "Luís",
+        "Ana",
+        "João"
+    ]
+
+    return render(
+        request,
+        'core/grupo.html',
+        {"membros": membros}
+    )
 
 def perfil(request):
     usuario = {

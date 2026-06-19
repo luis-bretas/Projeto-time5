@@ -178,22 +178,14 @@ nav a:hover{
                 Enviar atividade
             </button>
 
-            <div class="membros">
+            {% for membro in membros %}
 
-                <div class="membro">
-                    <h3>Ana Clara</h3>
-                    <p>1.480 pts</p>
-                </div>
+<div class="membro">
+    <h3>{{ membro }}</h3>
+    <p>Membro do grupo</p>
+</div>
 
-                <div class="membro">
-                    <h3>Você</h3>
-                    <p>1.250 pts</p>
-                </div>
-
-                <div class="membro">
-                    <h3>Theo</h3>
-                    <p>980 pts</p>
-                </div>
+{% endfor %}
 
             </div>
 
