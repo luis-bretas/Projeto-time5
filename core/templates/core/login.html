@@ -5,19 +5,34 @@
     <title>Login | Move Together</title>
 
     <style>
+        nav{
+    background-color: #111827;
+    padding: 16px 30px;
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
 
-        body{
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #0b1633, #142850);
+nav a{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+}
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
+nav a:hover{
+    color: #60a5fa;
+}
 
-            height: 100vh;
-        }
+       body{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #0b1633, #142850);
+    min-height: 100vh;
+}
 
         .login-box{
             background: white;
@@ -72,8 +87,16 @@
 </head>
 
 <body>
-
-    <div class="login-box">
+<nav>
+    <a href="/">Home</a>
+    <a href="/login/">Login</a>
+    <a href="/dashboard/">Dashboard</a>
+    <a href="/grupo/">Grupo</a>
+    <a href="/perfil/">Perfil</a>
+    <a href="/ranking/">Ranking</a>
+</nav>
+    <div class="login-container">
+        <div class="login-box">
 
         <h1>Move Together</h1>
 

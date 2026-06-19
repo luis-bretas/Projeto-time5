@@ -6,19 +6,23 @@
     <style>
         nav{
     background-color: #111827;
-    padding: 15px;
+    padding: 16px 30px;
     display: flex;
-    gap: 20px;
+    gap: 24px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 nav a{
     color: white;
     text-decoration: none;
     font-weight: bold;
+    font-size: 16px;
 }
 
 nav a:hover{
-    color: #2563eb;
+    color: #60a5fa;
 }
         @media (max-width: 600px){
 
@@ -27,11 +31,7 @@ nav a:hover{
         margin: 0;
     }
 
-    nav{
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
+    
 
     nav a{
         font-size: 18px;
@@ -93,15 +93,14 @@ nav a:hover{
 </head>
 
 <body>
-    <nav>
-      
-        <a href="/">Home</a>
-        <a href="/login/">Login</a>
-        <a href="/dashboard/">Dashboard</a>
-        <a href="/grupo/">Grupo</a>
-        <a href="/perfil/">Perfil</a>
-        <a href="/ranking/">Ranking</a>
-    </nav>
+   <nav>
+    <a href="/">Home</a>
+    <a href="/login/">Login</a>
+    <a href="/dashboard/">Dashboard</a>
+    <a href="/grupo/">Grupo</a>
+    <a href="/perfil/">Perfil</a>
+    <a href="/ranking/">Ranking</a>
+</nav>
         
     <h1>MOVE TOGETHER</h1>
     <p>Bem-vindo ao Move Together!</p>
