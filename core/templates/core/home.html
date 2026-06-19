@@ -94,10 +94,15 @@ nav a:hover{
 
 <body>
     <nav>
+      
         <a href="/">Home</a>
-        <a href="{% url 'login' %}">Login</a>
-        <form method='POST' action="{% url 'logout' %}">{% csrf_token %}<button type='submit'>Logout</button></form>
-</nav>
+        <a href="/login/">Login</a>
+        <a href="/dashboard/">Dashboard</a>
+        <a href="/grupo/">Grupo</a>
+        <a href="/perfil/">Perfil</a>
+        <a href="/ranking/">Ranking</a>
+    </nav>
+        
     <h1>MOVE TOGETHER</h1>
     <p>Bem-vindo ao Move Together!</p>
     <h2>Funcionalidades</h2>
