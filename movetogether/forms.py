@@ -1,7 +1,7 @@
 # movetogether/forms.py
 
 from django import forms
-from .models import Activity
+from core.models import Activity
 
 class ActivityForm(forms.ModelForm):
     class Meta:

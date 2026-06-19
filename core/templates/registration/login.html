@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -8,144 +9,175 @@
 
     <style>
 
-        body{
-            margin: 0;
-            padding: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: linear-gradient(135deg, #0f172a, #1e293b);
-            height: 100vh;
+         :root {
+        --bg-gradient: radial-gradient(circle, #1e40af 0%, #1e3a8a 100%);
+        --glass-bg: rgba(255, 255, 255, 0.15);
+        --glass-border: rgba(255, 255, 255, 0.2);
+        --primary-green: #22c55e;
+        --text-main: #ffffff;
+        --text-muted: #cbd5e1;
+    }
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .login-box{
-            background-color: white;
-            padding: 40px;
-            border-radius: 15px;
-            width: 320px;
-
-            box-shadow: 0px 0px 20px rgba(0,0,0,0.3);
-        }
-
-        h1{
-            text-align: center;
-            margin-bottom: 10px;
-            color: #0f172a;
-        }
-
-        p{
-            text-align: center;
-            color: gray;
-            margin-bottom: 30px;
-        }
-
-        input{
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-
-            border: 1px solid #ccc;
-            border-radius: 8px;
-
-            box-sizing: border-box;
-        }
-
-        button{
-            width: 100%;
-            padding: 12px;
-
-            border: none;
-            border-radius: 8px;
-
-            background-color: #2563eb;
-            color: white;
-
-            font-size: 16px;
-            cursor: pointer;
-
-            transition: 0.3s;
-        }
-
-        button:hover{
-            background-color: #1d4ed8;
-        }
-        nav{
-    background-color: #111827;
-    padding: 15px;
-    display: flex;
-    gap: 20px;
-}
-
-nav a{
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-nav a:hover{
-    color: #2563eb;
-}
-        @media (max-width: 600px){
-
-    body{
-        padding: 0;
+    body {
         margin: 0;
-    }
-
-    .navbar{
-        flex-direction: column;
+        padding: 0;
+        height: 100vh;
+        display: flex;
         align-items: center;
-        gap: 10px;
-        padding: 15px;
+        justify-content: center;
+        background: var(--bg-gradient);
+        font-family: 'Inter', -apple-system, sans-serif;
     }
 
-    .container{
+    .login-container {
         width: 90%;
-        margin: 20px auto;
-        padding: 20px;
-    }
-
-    h1{
-        font-size: 28px;
+        max-width: 400px;
+        padding: 40px 30px;
+        background: var(--glass-bg);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border: 1px solid var(--glass-border);
+        border-radius: 30px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         text-align: center;
     }
 
-    p{
-        font-size: 16px;
-        text-align: center;
+    .logo-box {
+        width: 80px;
+        height: 80px;
+        background: #000;
+        border-radius: 20px;
+        margin: 0 auto 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
     }
 
-    button{
+    /* Estilização do ícone neon da imagem */
+    .logo-icon {
+        font-size: 40px;
+        filter: drop-shadow(0 0 8px #f97316);
+    }
+
+    h1 {
+        color: var(--text-main);
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    p.subtitle {
+        color: var(--text-muted);
+        font-size: 14px;
+        margin-bottom: 35px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+        position: relative;
+    }
+
+    .form-control {
         width: 100%;
+        padding: 15px 20px 15px 50px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 50px;
+        color: white;
+        font-size: 16px;
+        box-sizing: border-box;
+        transition: all 0.3s ease;
     }
-}
+
+    .form-control::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+    }
+
+    .form-control:focus {
+        outline: none;
+        background: rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .input-icon {
+        position: absolute;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    .btn-login {
+        width: 100%;
+        padding: 15px;
+        background: var(--primary-green);
+        border: none;
+        border-radius: 50px;
+        color: white;
+        font-size: 18px;
+        font-weight: 700;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: transform 0.2s, background 0.3s;
+    }
+
+    .btn-login:hover {
+        background: #16a34a;
+        transform: translateY(-2px);
+    }
+
+    .btn-login:active {
+        transform: translateY(0);
+    }
+
+    .footer-links {
+        margin-top: 25px;
+        font-size: 14px;
+    }
+
+    .footer-links a {
+        color: var(--text-muted);
+        text-decoration: none;
+    }
+
+    .footer-links a:hover {
+        color: white;
+    }
 
     </style>
 
 </head>
 
 <body>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/login/">Login</a>
-    </nav>
-
-    <div class="login-box">
-
-        <h1>Move Together</h1>
-
-        <p>Faça login para continuar</p>
-
-        
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Login</button>
-    </form>
+    <div class="login-container">
+    <div class="logo-box">
+        <!-- Ícone representativo do MoveTogether -->
+        <span class="logo-icon"><img src="{% static 'img/logo.png' %}" alt="Logotipo do Movetogether"></span>
     </div>
 
-</body>
+    <h1>Bem-vindo de volta!</h1>
+    <p class="subtitle">Sua dose diária de movimento começa aqui</p>
+
+    <form method="post" >
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <span class="input-icon">📧</span>
+            <input type="text" name="username" class="form-control" placeholder="username" required>
+        </div>
+
+        <div class="form-group">
+            <span class="input-icon">🔒</span>
+            <input type="password" name="password" class="form-control" placeholder="Senha" required>
+        </div>
+
+        <button type="submit" class="btn-login">Entrar</button>
+    </form>
+
+    
+</div>
+
+</body> 
 
 </html>
