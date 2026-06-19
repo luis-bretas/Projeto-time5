@@ -4,6 +4,27 @@
     <title>Ranking | Move Together</title>
 
     <style>
+        nav{
+    background-color: #111827;
+    padding: 16px 30px;
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+nav a{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+nav a:hover{
+    color: #60a5fa;
+}
+
 
         body{
             margin:0;
@@ -54,30 +75,26 @@
 </head>
 
 <body>
-
+<nav>
+    <a href="/">Home</a>
+    <a href="/login/">Login</a>
+    <a href="/dashboard/">Dashboard</a>
+    <a href="/grupo/">Grupo</a>
+    <a href="/perfil/">Perfil</a>
+    <a href="/atividade/">Atividade</a>
+    <a href="/ranking/">Ranking</a>
+</nav>
 <div class="ranking-box">
 
     <h1>🏆 Ranking do Grupo</h1>
-
-    <div class="jogador primeiro">
-        <span>1º Theo</span>
-        <span>1500 pts</span>
-    </div>
-
-    <div class="jogador segundo">
-        <span>2º Luís</span>
-        <span>1250 pts</span>
-    </div>
-
-    <div class="jogador terceiro">
-        <span>3º Ana</span>
-        <span>980 pts</span>
-    </div>
-
+    {% for jogador in jogadores %}
     <div class="jogador">
-        <span>4º João</span>
-        <span>700 pts</span>
+        <span>{{ jogador.posicao }} {{ jogador.nome }}</span>
+        <span>{{ jogador.pontos }} pts</span>
     </div>
+{% endfor %}
+
+    
 
 </div>
 

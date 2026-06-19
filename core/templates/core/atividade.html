@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Enviar Atividade | Move Together</title>
+
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+        }
+
+        nav{
+            background-color: #111827;
+            padding: 16px 30px;
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        nav a:hover{
+            color: #60a5fa;
+        }
+
+        .atividade-box{
+            width: 450px;
+            margin: 50px auto;
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0px 2px 10px rgba(0,0,0,0.15);
+        }
+
+        h1{
+            text-align: center;
+            color: #111827;
+        }
+
+        label{
+            font-weight: bold;
+            display: block;
+            margin-top: 20px;
+        }
+
+        input, select{
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        button{
+            width: 100%;
+            margin-top: 25px;
+            padding: 14px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .mensagem{
+            background: #dcfce7;
+            color: #166534;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <a href="/">Home</a>
+    <a href="/login/">Login</a>
+    <a href="/dashboard/">Dashboard</a>
+    <a href="/grupo/">Grupo</a>
+    <a href="/perfil/">Perfil</a>
+    <a href="/atividade/">Atividade</a>
+    <a href="/ranking/">Ranking</a>
+</nav>
+
+<div class="atividade-box">
+
+    <h1>Enviar Atividade</h1>
+
+    {% if mensagem %}
+        <div class="mensagem">
+            {{ mensagem }}
+        </div>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>Nome da atividade</label>
+        <input type="text" name="nome" placeholder="Ex: Corrida no parque">
+
+        <label>Tipo de atividade</label>
+        <select name="tipo">
+            <option>Corrida</option>
+            <option>Academia</option>
+            <option>Natação</option>
+            <option>Ciclismo</option>
+            <option>Luta</option>
+        </select>
+
+        <label>Pontos</label>
+        <input type="number" name="pontos" placeholder="Ex: 150">
+
+        <button type="submit">Enviar atividade</button>
+    </form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Histórico de Atividades</title>
+</head>
+<body>
+
+    <h1>Histórico de Atividades</h1>
+
+    <table border="1">
+
+        <tr>
+            <th>Usuário</th>
+            <th>Tipo</th>
+            <th>Duração</th>
+            <th>Pontos</th>
+        </tr>
+
+        {% for atividade in atividades %}
+        <tr>
+            <td>{{ atividade.usuario.user.username }}</td>
+            <td>{{ atividade.tipo }}</td>
+            <td>{{ atividade.duracao }}</td>
+            <td>{{ atividade.pontos }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+</body>
+</html>
