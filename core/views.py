@@ -37,3 +37,21 @@ def ranking(request):
     ]
 
     return render(request, 'core/ranking.html', {"jogadores": jogadores})
+
+def atividade(request):
+
+    mensagem = ""
+
+    if request.method == "POST":
+
+        nome = request.POST.get("nome")
+        tipo = request.POST.get("tipo")
+        pontos = request.POST.get("pontos")
+
+        mensagem = f"Atividade '{nome}' enviada com sucesso! (+{pontos} pontos)"
+
+    return render(
+        request,
+        'core/atividade.html',
+        {"mensagem": mensagem}
+    )
