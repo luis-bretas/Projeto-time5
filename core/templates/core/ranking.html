@@ -1,100 +1,297 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <meta charset="UTF-8">
     <title>Ranking | Move Together</title>
 
     <style>
-        nav{
-    background-color: #111827;
-    padding: 16px 30px;
-    display: flex;
-    gap: 24px;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-nav a{
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 16px;
-}
-
-nav a:hover{
-    color: #60a5fa;
-}
-
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body{
-            margin:0;
-            padding:0;
-            background:#f4f6f9;
-            font-family: Arial, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0f172a;
+            color: white;
         }
 
-        .ranking-box{
-            width:700px;
-            margin:50px auto;
-            background:white;
-            padding:40px;
-            border-radius:15px;
-            box-shadow:0 2px 10px rgba(0,0,0,0.15);
+        nav{
+            background: #111827;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            padding: 18px;
+            flex-wrap: wrap;
+            border-bottom: 1px solid #1f2937;
         }
 
-        h1{
-            text-align:center;
-            color:#111827;
-            margin-bottom:40px;
+        nav a{
+            color: #d1d5db;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            transition: .3s;
         }
 
-        .jogador{
-            display:flex;
-            justify-content:space-between;
-            padding:15px;
-            margin-bottom:15px;
-            border-radius:10px;
-            background:#f3f4f6;
-            font-size:20px;
+        nav a:hover{
+            color: #f97316;
         }
 
-        .primeiro{
-            background:#fff3cd;
+        .container{
+            width: 94%;
+            max-width: 1200px;
+            margin: 35px auto;
         }
 
-        .segundo{
-            background:#e5e7eb;
+        .ranking-header{
+            background: linear-gradient(135deg, #fb6b05, #ea3b00);
+            border-radius: 26px;
+            padding: 34px;
+            margin-bottom: 35px;
+            box-shadow: 0 18px 30px rgba(249,115,22,.25);
         }
 
-        .terceiro{
-            background:#fcd9b6;
+        .ranking-header small{
+            font-weight: bold;
+            color: rgba(255,255,255,.85);
         }
 
+        .ranking-header h1{
+            font-size: 42px;
+            margin: 14px 0;
+        }
+
+        .ranking-header p{
+            color: rgba(255,255,255,.9);
+            font-size: 18px;
+        }
+
+        .ranking-list{
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .ranking-card{
+            background: #111827;
+            border: 1px solid #334155;
+            border-radius: 22px;
+            padding: 24px;
+            display: grid;
+            grid-template-columns: 80px 1fr 150px;
+            align-items: center;
+            gap: 20px;
+            transition: .3s;
+        }
+
+        .ranking-card:hover{
+            transform: translateY(-4px);
+            border-color: #f97316;
+        }
+
+        .posicao{
+            width: 60px;
+            height: 60px;
+            border-radius: 18px;
+            background: #1e293b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+        }
+
+        .usuario h2{
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .usuario span{
+            color: #94a3b8;
+        }
+
+        .barra{
+            width: 100%;
+            height: 10px;
+            background: #1e293b;
+            border-radius: 999px;
+            overflow: hidden;
+            margin-top: 12px;
+        }
+
+        .barra-fill{
+            height: 100%;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #f97316, #fb923c);
+        }
+
+        .ranking-card:nth-child(1){
+            border-color: #facc15;
+            background: linear-gradient(135deg, rgba(250,204,21,.18), #111827);
+        }
+
+        .ranking-card:nth-child(2){
+            border-color: #06b6d4;
+            background: linear-gradient(135deg, rgba(6,182,212,.18), #111827);
+        }
+
+        .ranking-card:nth-child(3){
+            border-color: #f97316;
+            background: linear-gradient(135deg, rgba(249,115,22,.18), #111827);
+        }
+
+        .ranking-card:nth-child(1) .barra-fill{
+            width: 100%;
+        }
+
+        .ranking-card:nth-child(2) .barra-fill{
+            width: 83%;
+        }
+
+        .ranking-card:nth-child(3) .barra-fill{
+            width: 65%;
+        }
+
+        .ranking-card:nth-child(4) .barra-fill{
+            width: 47%;
+        }
+
+        .pontos{
+            text-align: right;
+        }
+
+        .pontos strong{
+            display: block;
+            font-size: 28px;
+            color: #fb923c;
+        }
+
+        .pontos span{
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        .btn-area{
+            margin-top: 35px;
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn{
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 999px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: .3s;
+        }
+
+        .btn-orange{
+            background: #f97316;
+            color: white;
+            box-shadow: 0 12px 25px rgba(249,115,22,.25);
+        }
+
+        .btn-dark{
+            background: #1e293b;
+            color: white;
+            border: 1px solid #334155;
+        }
+
+        .btn:hover{
+            transform: translateY(-3px);
+        }
+
+        @media(max-width: 800px){
+            .ranking-card{
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .posicao{
+                margin: 0 auto;
+            }
+
+            .pontos{
+                text-align: center;
+            }
+
+            .ranking-header h1{
+                font-size: 34px;
+            }
+        }
     </style>
-
 </head>
 
 <body>
+
 <nav>
     <a href="/">Home</a>
     <a href="/login/">Login</a>
     <a href="/dashboard/">Dashboard</a>
     <a href="/grupo/">Grupo</a>
-    <a href="/perfil/">Perfil</a>
     <a href="/atividade/">Atividade</a>
+    <a href="/perfil/">Perfil</a>
     <a href="/ranking/">Ranking</a>
 </nav>
-<div class="ranking-box">
 
-    <h1>🏆 Ranking do Grupo</h1>
-    {% for jogador in jogadores %}
-    <div class="jogador">
-        <span>{{ jogador.posicao }} {{ jogador.nome }}</span>
-        <span>{{ jogador.pontos }} pts</span>
+<div class="container">
+
+    <section class="ranking-header">
+        <small>🏆 Classificação do grupo</small>
+
+        <h1>Ranking do Grupo</h1>
+
+        <p>
+            Acompanhe os participantes com maior pontuação e veja sua posição na competição.
+        </p>
+    </section>
+
+    <section class="ranking-list">
+
+        {% for jogador in jogadores %}
+
+        <div class="ranking-card">
+
+            <div class="posicao">
+                {% if forloop.counter == 1 %}
+                    🥇
+                {% elif forloop.counter == 2 %}
+                    🥈
+                {% elif forloop.counter == 3 %}
+                    🥉
+                {% else %}
+                    {{ jogador.posicao }}
+                {% endif %}
+            </div>
+
+            <div class="usuario">
+                <h2>{{ jogador.nome }}</h2>
+                <span>Participante ativo do Move Together</span>
+
+                <div class="barra">
+                    <div class="barra-fill"></div>
+                </div>
+            </div>
+
+            <div class="pontos">
+                <strong>{{ jogador.pontos }}</strong>
+                <span>pontos</span>
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </section>
+
+    <div class="btn-area">
+        <a href="/atividade/" class="btn btn-orange">Enviar atividade</a>
+        <a href="/grupo/" class="btn btn-dark">Voltar ao grupo</a>
     </div>
-{% endfor %}
-
-    
 
 </div>
 
