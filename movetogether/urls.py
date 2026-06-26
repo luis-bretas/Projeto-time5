@@ -8,7 +8,7 @@ from core.views import home, login, dashboard, grupo, perfil, ranking, atividade
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home),
-    path('login/', login),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('dashboard/', dashboard),
     path('grupo/', grupo),
     path('perfil/', perfil),
