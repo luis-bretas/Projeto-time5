@@ -58,57 +58,6 @@ Campos:
 * Duração
 * Pontos obtidos
 
-## Instalação
-
-Clone o repositório:
-
-```bash
-git clone URL_DO_REPOSITORIO
-```
-
-Acesse a pasta do projeto:
-
-```bash
-cd projeto
-```
-
-Instale as dependências:
-
-```bash
-pip install django
-```
-
-Execute as migrações:
-
-```bash
-python manage.py migrate
-```
-
-Crie um superusuário:
-
-```bash
-python manage.py createsuperuser
-```
-
-Inicie o servidor:
-
-```bash
-python manage.py runserver
-```
-
-## Utilização
-
-Após iniciar o servidor, acesse:
-
-```text
-http://127.0.0.1:8000/
-```
-
-Para acessar o painel administrativo:
-
-```text
-http://127.0.0.1:8000/admin/
-```
 
 ## Objetivos do Projeto
 
