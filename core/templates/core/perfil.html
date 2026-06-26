@@ -1,89 +1,406 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <title>Perfil - Move Together</title>
+    <meta charset="UTF-8">
+    <title>Perfil | Move Together</title>
 
     <style>
-        nav{
-    background-color: #111827;
-    padding: 16px 30px;
-    display: flex;
-    gap: 24px;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-nav a{
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 16px;
-}
-
-nav a:hover{
-    color: #60a5fa;
-}
-        body{
+        *{
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f4f6f9;
+            box-sizing: border-box;
         }
 
-        .perfil-box{
-            width: 400px;
-            margin: 50px auto;
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0px 2px 10px rgba(0,0,0,0.15);
-        }
-
-        h1{
-            color: #111827;
-        }
-
-        p{
-            font-size: 18px;
-        }
-
-        button{
-            background: #2563eb;
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0f172a;
             color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 8px;
-            cursor: pointer;
         }
 
-        button:hover{
-            background: #1d4ed8;
+        nav{
+            background: #111827;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            padding: 18px;
+            flex-wrap: wrap;
+            border-bottom: 1px solid #1f2937;
+        }
+
+        nav a{
+            color: #d1d5db;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            transition: .3s;
+        }
+
+        nav a:hover{
+            color: #f97316;
+        }
+
+        .container{
+            width: 94%;
+            max-width: 1600px;
+            margin: 35px auto;
+        }
+
+        .perfil-header{
+            background: #111827;
+            border: 1px solid #334155;
+            border-radius: 26px;
+            padding: 34px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .perfil-header::before{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 6px;
+            width: 100%;
+            background: linear-gradient(90deg, #f97316, #06b6d4, #7c3aed);
+        }
+
+        .perfil-topo{
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 25px;
+        }
+
+        .avatar{
+            width: 110px;
+            height: 110px;
+            border-radius: 26px;
+            background: linear-gradient(135deg, #f97316, #fb923c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 52px;
+            box-shadow: 0 15px 30px rgba(249,115,22,.25);
+        }
+
+        .perfil-info h1{
+            font-size: 38px;
+            margin-bottom: 6px;
+        }
+
+        .perfil-info span{
+            color: #94a3b8;
+            font-size: 17px;
+        }
+
+        .perfil-descricao{
+            color: #cbd5e1;
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .perfil-actions{
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn{
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 999px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: .3s;
+        }
+
+        .btn-orange{
+            background: #f97316;
+            color: white;
+            box-shadow: 0 12px 25px rgba(249,115,22,.25);
+        }
+
+        .btn-dark{
+            background: #1e293b;
+            color: white;
+            border: 1px solid #334155;
+        }
+
+        .btn:hover{
+            transform: translateY(-3px);
+        }
+
+        .stats{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 35px;
+        }
+
+        .stat-card{
+            background: #111827;
+            border: 1px solid #334155;
+            border-radius: 20px;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .stat-card .icone{
+            font-size: 30px;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .stat-card h2{
+            font-size: 30px;
+            margin-bottom: 5px;
+        }
+
+        .stat-card p{
+            color: #94a3b8;
+        }
+
+        .laranja{
+            border-color: #f97316;
+            background: linear-gradient(135deg, rgba(249,115,22,.22), #111827);
+        }
+
+        .azul{
+            border-color: #06b6d4;
+            background: linear-gradient(135deg, rgba(6,182,212,.22), #111827);
+        }
+
+        .roxo{
+            border-color: #7c3aed;
+            background: linear-gradient(135deg, rgba(124,58,237,.25), #111827);
+        }
+
+        .verde{
+            border-color: #10b981;
+            background: linear-gradient(135deg, rgba(16,185,129,.22), #111827);
+        }
+
+        .secao{
+            background: #111827;
+            border: 1px solid #334155;
+            border-radius: 22px;
+            padding: 26px;
+            margin-bottom: 30px;
+        }
+
+        .secao h2{
+            font-size: 26px;
+            margin-bottom: 22px;
+        }
+
+        .conquistas{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .conquista{
+            background: linear-gradient(135deg, rgba(250,204,21,.18), rgba(249,115,22,.12));
+            border: 1px solid rgba(250,204,21,.35);
+            border-radius: 18px;
+            padding: 22px;
+            text-align: center;
+        }
+
+        .conquista span{
+            font-size: 34px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .conquista strong{
+            display: block;
+            font-size: 15px;
+        }
+
+        .atividade-item{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #1e293b;
+            border: 1px solid #334155;
+            padding: 18px;
+            border-radius: 16px;
+            margin-bottom: 14px;
+        }
+
+        .atividade-info strong{
+            display: block;
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+
+        .atividade-info span{
+            color: #94a3b8;
+        }
+
+        .pontos{
+            background: rgba(249,115,22,.18);
+            color: #fb923c;
+            padding: 10px 16px;
+            border-radius: 999px;
+            font-weight: bold;
+        }
+
+        @media(max-width: 900px){
+            .stats,
+            .conquistas{
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .perfil-topo{
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media(max-width: 600px){
+            .stats,
+            .conquistas{
+                grid-template-columns: 1fr;
+            }
+
+            .perfil-info h1{
+                font-size: 30px;
+            }
         }
     </style>
 </head>
 
 <body>
+
 <nav>
     <a href="/">Home</a>
     <a href="/login/">Login</a>
     <a href="/dashboard/">Dashboard</a>
     <a href="/grupo/">Grupo</a>
-    <a href="/perfil/">Perfil</a>
     <a href="/atividade/">Atividade</a>
+    <a href="/perfil/">Perfil</a>
     <a href="/ranking/">Ranking</a>
 </nav>
-<div class="perfil-box">
 
-    <h1>Meu Perfil</h1>
+<div class="container">
 
-    <p><strong>Nome:</strong> {{ usuario.nome }}</p>
-    <p><strong>Pontos:</strong> {{ usuario.pontos }}</p>
-    <p><strong>Nível:</strong> {{ usuario.nivel }}</p>
-    <p><strong>Esporte Favorito:</strong> {{ usuario.esporte }}</p>
+    <section class="perfil-header">
 
-    <button>Editar Perfil</button>
+        <div class="perfil-topo">
+
+            <div class="avatar">
+                😎
+            </div>
+
+            <div class="perfil-info">
+                <h1>{{ usuario.nome }}</h1>
+                <span>@{{ usuario.nome|lower }}</span>
+            </div>
+
+        </div>
+
+        <p class="perfil-descricao">
+            Apaixonado por fitness 💪 • {{ usuario.esporte }} • Nível {{ usuario.nivel }}
+        </p>
+
+        <div class="perfil-actions">
+            <a href="#" class="btn btn-orange">Editar Perfil</a>
+            <a href="/atividade/" class="btn btn-dark">Enviar Atividade</a>
+        </div>
+
+    </section>
+
+    <section class="stats">
+
+        <div class="stat-card laranja">
+            <span class="icone">🎯</span>
+            <h2>45</h2>
+            <p>Treinos</p>
+        </div>
+
+        <div class="stat-card azul">
+            <span class="icone">⚡</span>
+            <h2>{{ usuario.pontos }}</h2>
+            <p>Pontos</p>
+        </div>
+
+        <div class="stat-card roxo">
+            <span class="icone">👥</span>
+            <h2>4</h2>
+            <p>Grupos</p>
+        </div>
+
+        <div class="stat-card verde">
+            <span class="icone">🔥</span>
+            <h2>12d</h2>
+            <p>Sequência</p>
+        </div>
+
+    </section>
+
+    <section class="secao">
+
+        <h2>🏅 Conquistas</h2>
+
+        <div class="conquistas">
+
+            <div class="conquista">
+                <span>🎯</span>
+                <strong>Primeira Atividade</strong>
+            </div>
+
+            <div class="conquista">
+                <span>🔥</span>
+                <strong>Sequência 7 dias</strong>
+            </div>
+
+            <div class="conquista">
+                <span>🏆</span>
+                <strong>Top 3</strong>
+            </div>
+
+            <div class="conquista">
+                <span>⭐</span>
+                <strong>Mestre do Grupo</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="secao">
+
+        <h2>🏆 Atividades Recentes</h2>
+
+        <div class="atividade-item">
+            <div class="atividade-info">
+                <strong>🏋️ Crossfit</strong>
+                <span>Hoje às 07:30 • 45 min</span>
+            </div>
+            <div class="pontos">⚡ +50</div>
+        </div>
+
+        <div class="atividade-item">
+            <div class="atividade-info">
+                <strong>🏃 Corrida</strong>
+                <span>Ontem às 06:00 • 30 min</span>
+            </div>
+            <div class="pontos">⚡ +40</div>
+        </div>
+
+        <div class="atividade-item">
+            <div class="atividade-info">
+                <strong>🧘 Yoga</strong>
+                <span>2 dias atrás • 60 min</span>
+            </div>
+            <div class="pontos">⚡ +45</div>
+        </div>
+
+    </section>
 
 </div>
 
