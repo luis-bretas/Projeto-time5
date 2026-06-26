@@ -5,102 +5,245 @@
     <title>Dashboard | Move Together</title>
 
     <style>
-        nav{
-    background-color: #111827;
-    padding: 16px 30px;
-    display: flex;
-    gap: 24px;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-nav a{
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 16px;
-}
-
-nav a:hover{
-    color: #60a5fa;
-}
-        body{
+        *{
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f1f5f9;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .navbar{
+        body{
+            font-family: Arial, Helvetica, sans-serif;
             background: #0f172a;
             color: white;
-            padding: 20px 40px;
+        }
+
+        nav{
+            background: #111827;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
+            gap: 30px;
+            padding: 18px;
+            flex-wrap: wrap;
+            border-bottom: 1px solid #1f2937;
+        }
+
+        nav a{
+            color: #d1d5db;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            transition: .3s;
+        }
+
+        nav a:hover{
+            color: #f97316;
         }
 
         .container{
-            padding: 30px;
+            width: 94%;
+            max-width: 1600px;
+            margin: 35px auto;
         }
 
-        .cards{
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+        .topo{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 30px;
         }
 
-        .card{
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        .topo p{
+            color: #cbd5e1;
+            margin-bottom: 8px;
         }
 
-        .card h2{
-            margin: 0;
-            color: #0f172a;
+        .topo h1{
+            font-size: 34px;
         }
 
-        .card p{
-            color: #64748b;
+        .notificacao{
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            border: 1px solid #334155;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #1e293b;
+            font-size: 24px;
         }
 
-        .ranking, .atividades{
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        .cards-status{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 35px;
         }
 
-        table{
+        .status-card{
+            background: #111827;
+            border: 1px solid #334155;
+            border-radius: 18px;
+            padding: 24px;
+            min-height: 120px;
+        }
+
+        .status-card span{
+            display: block;
+            font-size: 15px;
+            color: #cbd5e1;
+            margin-bottom: 12px;
+        }
+
+        .status-card h2{
+            font-size: 34px;
+        }
+
+        .laranja{
+            border-color: #f97316;
+            background: linear-gradient(135deg, rgba(249,115,22,.25), #111827);
+        }
+
+        .azul{
+            border-color: #06b6d4;
+            background: linear-gradient(135deg, rgba(6,182,212,.22), #111827);
+        }
+
+        .roxo{
+            border-color: #7c3aed;
+            background: linear-gradient(135deg, rgba(124,58,237,.25), #111827);
+        }
+
+        .desafio{
+            background: linear-gradient(135deg, #fb6b05, #ea3b00);
+            border-radius: 24px;
+            padding: 30px;
+            margin-bottom: 35px;
+            box-shadow: 0 18px 30px rgba(249,115,22,.25);
+        }
+
+        .desafio small{
+            font-weight: bold;
+        }
+
+        .desafio h2{
+            margin: 18px 0 12px;
+            font-size: 30px;
+        }
+
+        .progress{
             width: 100%;
-            border-collapse: collapse;
+            height: 10px;
+            border-radius: 999px;
+            background: rgba(255,255,255,.25);
+            margin: 24px 0;
+            overflow: hidden;
         }
 
-        th, td{
-            padding: 12px;
-            border-bottom: 1px solid #e2e8f0;
-            text-align: left;
+        .progress-bar{
+            width: 65%;
+            height: 100%;
+            background: white;
+            border-radius: 999px;
         }
 
-        th{
-            color: #334155;
+        .btn-light{
+            display: inline-block;
+            background: white;
+            color: #f97316;
+            padding: 12px 28px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: bold;
         }
 
-        .badge{
-            background: #2563eb;
-            color: white;
-            padding: 6px 10px;
+        .atalhos{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin-bottom: 35px;
+        }
+
+        .atalho{
+            background: #1e293b;
+            border: 1px solid #334155;
             border-radius: 20px;
-            font-size: 12px;
+            padding: 34px;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            transition: .3s;
+        }
+
+        .atalho:hover{
+            transform: translateY(-4px);
+            border-color: #f97316;
+        }
+
+        .atalho .icone{
+            font-size: 42px;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .atividades{
+            background: #111827;
+            border: 1px solid #334155;
+            border-radius: 22px;
+            padding: 26px;
+        }
+
+        .atividades h2{
+            margin-bottom: 20px;
+        }
+
+        .atividade-item{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #1e293b;
+            border: 1px solid #334155;
+            padding: 18px;
+            border-radius: 16px;
+            margin-bottom: 14px;
+        }
+
+        .atividade-info strong{
+            display: block;
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+
+        .atividade-info span{
+            color: #94a3b8;
+        }
+
+        .pontos{
+            background: rgba(249,115,22,.18);
+            color: #fb923c;
+            padding: 10px 16px;
+            border-radius: 999px;
+            font-weight: bold;
+        }
+
+        @media(max-width: 800px){
+            .cards-status,
+            .atalhos{
+                grid-template-columns: 1fr;
+            }
+
+            .topo{
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
         }
     </style>
 </head>
 
 <body>
+
 <nav>
     <a href="/">Home</a>
     <a href="/login/">Login</a>
@@ -110,76 +253,93 @@ nav a:hover{
     <a href="/perfil/">Perfil</a>
     <a href="/ranking/">Ranking</a>
 </nav>
-    <div class="navbar">
-        <h2>Move Together</h2>
-        <span>Olá, Usuário</span>
-    </div>
 
-    <div class="container">
+<div class="container">
 
-        <h1>Dashboard</h1>
-        <p>Acompanhe seu desempenho e o progresso do seu grupo.</p>
-
-        <div class="cards">
-            <div class="card">
-                <h2>1.250 pts</h2>
-                <p>Pontuação total</p>
-            </div>
-
-            <div class="card">
-                <h2>8</h2>
-                <p>Atividades enviadas</p>
-            </div>
-
-            <div class="card">
-                <h2>2º lugar</h2>
-                <p>Ranking do grupo</p>
-            </div>
+    <section class="topo">
+        <div>
+            <p>Bem-vindo(a)</p>
+            <h1>Luís Mendes</h1>
         </div>
 
-        <div class="ranking">
-            <h2>Ranking do Grupo</h2>
+        <div class="notificacao">🔔</div>
+    </section>
 
-            <table>
-                <tr>
-                    <th>Posição</th>
-                    <th>Usuário</th>
-                    <th>Pontos</th>
-                    <th>Status</th>
-                </tr>
+    <section class="cards-status">
 
-                <tr>
-                    <td>1º</td>
-                    <td>Ana Clara</td>
-                    <td>1.480</td>
-                    <td><span class="badge">Líder</span></td>
-                </tr>
-
-                <tr>
-                    <td>2º</td>
-                    <td>Você</td>
-                    <td>1.250</td>
-                    <td><span class="badge">Competindo</span></td>
-                </tr>
-
-                <tr>
-                    <td>3º</td>
-                    <td>Theo</td>
-                    <td>980</td>
-                    <td><span class="badge">Ativo</span></td>
-                </tr>
-            </table>
+        <div class="status-card laranja">
+            <span>🏆 Posição</span>
+            <h2>2º</h2>
         </div>
 
-        <div class="atividades">
-            <h2>Atividades Recentes</h2>
-
-            <p>🏃 Corrida, 5 km, +150 pontos</p>
-            <p>🏋️ Academia, treino completo, +120 pontos</p>
-            <p>🏊 Natação, 40 minutos, +130 pontos</p>
+        <div class="status-card azul">
+            <span>⚡ Pontos</span>
+            <h2>340</h2>
         </div>
 
-    </div>
+        <div class="status-card roxo">
+            <span>🔥 Sequência</span>
+            <h2>7d</h2>
+        </div>
+
+    </section>
+
+    <section class="desafio">
+        <small>🎯 Desafio da Semana</small>
+        <h2>Guerreiros do Crossfit</h2>
+        <p>5 treinos restantes • Termina em 3 dias</p>
+
+        <div class="progress">
+            <div class="progress-bar"></div>
+        </div>
+
+        <a href="/grupo/" class="btn-light">Ver Grupo</a>
+    </section>
+
+    <section class="atalhos">
+
+        <a href="/atividade/" class="atalho">
+            <span class="icone">＋</span>
+            <h2>Registrar Atividade</h2>
+        </a>
+
+        <a href="/grupo/" class="atalho">
+            <span class="icone">👥</span>
+            <h2>Meus Grupos</h2>
+        </a>
+
+    </section>
+
+    <section class="atividades">
+        <h2>Atividades Recentes</h2>
+
+        <div class="atividade-item">
+            <div class="atividade-info">
+                <strong>🏃 Ana Silva</strong>
+                <span>Corrida - 5km • há 2h</span>
+            </div>
+            <div class="pontos">⚡ +50</div>
+        </div>
+
+        <div class="atividade-item">
+            <div class="atividade-info">
+                <strong>🏋️ Pedro Costa</strong>
+                <span>Musculação - 1h • há 4h</span>
+            </div>
+            <div class="pontos">⚡ +40</div>
+        </div>
+
+        <div class="atividade-item">
+            <div class="atividade-info">
+                <strong>🏊 Mariana Lima</strong>
+                <span>Natação - 40min • ontem</span>
+            </div>
+            <div class="pontos">⚡ +35</div>
+        </div>
+
+    </section>
+
+</div>
 
 </body>
 </html>
