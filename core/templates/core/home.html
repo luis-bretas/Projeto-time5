@@ -1,158 +1,463 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
+    <meta charset="UTF-8">
     <title>Move Together</title>
-    
+
     <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0f172a;
+            color: white;
+        }
+
         nav{
-    background-color: #111827;
-    padding: 16px 30px;
-    display: flex;
-    gap: 24px;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-}
+            background: #111827;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            padding: 18px;
+            flex-wrap: wrap;
+            border-bottom: 1px solid #1f2937;
+        }
 
-nav a{
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 16px;
-}
+        nav a{
+            color: #d1d5db;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            transition: .3s;
+        }
 
-nav a:hover{
-    color: #60a5fa;
-}
-        @media (max-width: 600px){
+        nav a:hover{
+            color: #f97316;
+        }
 
-    body{
-        padding: 0;
-        margin: 0;
-    }
+        .container{
+            width: 94%;
+            max-width: 1500px;
+            margin: 35px auto;
+        }
 
-    
+        .hero{
+            background: linear-gradient(135deg, rgba(249,115,22,.25), rgba(6,182,212,.12), rgba(124,58,237,.18));
+            border: 1px solid #334155;
+            border-radius: 30px;
+            padding: 70px 40px;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
 
-    nav a{
-        font-size: 18px;
-    }
+        .hero::before{
+            content: "";
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: rgba(249,115,22,.18);
+            top: -70px;
+            right: -70px;
+        }
 
-    h1{
-        font-size: 32px;
-        text-align: center;
-    }
-    h2{
-    text-align: center;
-    margin-top: 40px;
-    margin-bottom: 20px;
-}
+        .hero::after{
+            content: "";
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: rgba(6,182,212,.15);
+            bottom: -60px;
+            left: -50px;
+        }
 
-    p{
-        font-size: 18px;
-        text-align: center;
-        padding: 0 15px;
-    }
-    .cards{
-    flex-direction: column;
-    align-items: center;
-    }
+        .hero-content{
+            position: relative;
+            z-index: 2;
+        }
 
-.card{
-    width: 80%;
-}
-}
-    .cards{
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 30px;
-}
+        .logo{
+            font-size: 56px;
+            margin-bottom: 18px;
+        }
 
-.card{
-    width: 200px;
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 12px;
-    text-align: center;
-    border-top: 5px solid #2563eb;
+        .hero h1{
+            font-size: 56px;
+            margin-bottom: 16px;
+        }
 
-    box-shadow: 0px 2px 10px rgba(0,0,0,0.15);
+        .hero h1 span{
+            color: #f97316;
+        }
 
-    transition: 0.3s;
-}
+        .hero p{
+            color: #cbd5e1;
+            font-size: 22px;
+            max-width: 750px;
+            margin: 0 auto 35px;
+            line-height: 1.5;
+        }
 
-.card:hover{
-    transform: translateY(-8px);
-    box-shadow: 0px 8px 20px rgba(37,99,235,0.25);
-}
+        .hero-buttons{
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
 
+        .btn{
+            display: inline-block;
+            padding: 15px 32px;
+            border-radius: 999px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: .3s;
+            font-size: 17px;
+        }
+
+        .btn-orange{
+            background: #f97316;
+            color: white;
+            box-shadow: 0 14px 30px rgba(249,115,22,.28);
+        }
+
+        .btn-dark{
+            background: #1e293b;
+            color: white;
+            border: 1px solid #334155;
+        }
+
+        .btn:hover{
+            transform: translateY(-4px);
+        }
+
+        .section-title{
+            font-size: 32px;
+            margin-bottom: 24px;
+        }
+
+        .cards{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 45px;
+        }
+
+        .card{
+            background: #111827;
+            border: 1px solid #334155;
+            border-radius: 22px;
+            padding: 28px;
+            transition: .3s;
+            min-height: 210px;
+        }
+
+        .card:hover{
+            transform: translateY(-6px);
+            border-color: #f97316;
+        }
+
+        .card .icone{
+            font-size: 42px;
+            margin-bottom: 18px;
+            display: block;
+        }
+
+        .card h3{
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .card p{
+            color: #94a3b8;
+            line-height: 1.5;
+        }
+
+        .laranja{
+            border-color: #f97316;
+            background: linear-gradient(135deg, rgba(249,115,22,.18), #111827);
+        }
+
+        .azul{
+            border-color: #06b6d4;
+            background: linear-gradient(135deg, rgba(6,182,212,.18), #111827);
+        }
+
+        .roxo{
+            border-color: #7c3aed;
+            background: linear-gradient(135deg, rgba(124,58,237,.18), #111827);
+        }
+
+        .verde{
+            border-color: #10b981;
+            background: linear-gradient(135deg, rgba(16,185,129,.18), #111827);
+        }
+
+        .como-funciona{
+            background: #111827;
+            border: 1px solid #334155;
+            border-radius: 26px;
+            padding: 34px;
+            margin-bottom: 45px;
+        }
+
+        .passos{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .passo{
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 20px;
+            padding: 26px;
+            text-align: center;
+        }
+
+        .numero{
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: #f97316;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+            font-weight: bold;
+            font-size: 22px;
+        }
+
+        .passo h3{
+            margin-bottom: 10px;
+        }
+
+        .passo p{
+            color: #94a3b8;
+            line-height: 1.5;
+        }
+
+        .habilidades-grid{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 40px;
+        }
+
+        .habilidade{
+            background: #111827;
+            border: 1px solid #334155;
+            border-radius: 22px;
+            padding: 28px;
+            text-align: center;
+            transition: .3s;
+        }
+
+        .habilidade:hover{
+            transform: translateY(-5px);
+            border-color: #f97316;
+        }
+
+        .habilidade .emoji{
+            font-size: 42px;
+            display: block;
+            margin-bottom: 14px;
+        }
+
+        .habilidade h3{
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .habilidade p{
+            color: #94a3b8;
+        }
+
+        .cta{
+            background: linear-gradient(135deg, #fb6b05, #ea3b00);
+            border-radius: 26px;
+            padding: 42px;
+            text-align: center;
+            box-shadow: 0 18px 30px rgba(249,115,22,.25);
+        }
+
+        .cta h2{
+            font-size: 34px;
+            margin-bottom: 12px;
+        }
+
+        .cta p{
+            font-size: 18px;
+            color: rgba(255,255,255,.9);
+            margin-bottom: 24px;
+        }
+
+        .cta .btn{
+            background: white;
+            color: #f97316;
+        }
+
+        @media(max-width: 1000px){
+            .cards{
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .passos,
+            .habilidades-grid{
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1{
+                font-size: 42px;
+            }
+        }
+
+        @media(max-width: 600px){
+            .cards{
+                grid-template-columns: 1fr;
+            }
+
+            .hero{
+                padding: 50px 24px;
+            }
+
+            .hero h1{
+                font-size: 34px;
+            }
+
+            .hero p{
+                font-size: 18px;
+            }
+        }
     </style>
-
-
 </head>
 
 <body>
-   <nav>
+
+<nav>
     <a href="/">Home</a>
-    <a href="{% url 'login' %}">Login</a>
+    <a href="/login/">Login</a>
     <a href="/dashboard/">Dashboard</a>
     <a href="/grupo/">Grupo</a>
-    <a href="/perfil/">Perfil</a>
     <a href="/atividade/">Atividade</a>
+    <a href="/perfil/">Perfil</a>
     <a href="/ranking/">Ranking</a>
 </nav>
-        
-    <h1>MOVE TOGETHER</h1>
-    <p>Bem-vindo ao Move Together!</p>
-    <h2>Funcionalidades</h2>
 
-<div class="cards">
+<div class="container">
 
-    <div class="card">
-        🏃
-        <h3>Corrida</h3>
-        <p>Registro de atividades de corrida.</p>
-    </div>
+    <section class="hero">
+        <div class="hero-content">
+            <div class="logo">🔥∞</div>
 
-    <div class="card">
-        🏋️
-        <h3>Academia</h3>
-        <p>Compartilhamento de treinos.</p>
-    </div>
+            <h1>Move <span>Together</span></h1>
 
-    <div class="card">
-        👥
-        <h3>Grupos</h3>
-        <p>Competição entre amigos.</p>
-    </div>
+            <p>
+                Treine, registre suas atividades, ganhe pontos e compita com seus amigos
+                em grupos de desafios fitness.
+            </p>
 
-    <div class="card">
-        🏆
-        <h3>Ranking</h3>
-        <p>Pontuação e classificação.</p>
-    </div>
+            <div class="hero-buttons">
+                <a href="/login/" class="btn btn-orange">Começar agora</a>
+                <a href="/ranking/" class="btn btn-dark">Ver ranking</a>
+            </div>
+        </div>
+    </section>
 
-</div>
-<h2>Habilidades</h2>
+    <h2 class="section-title">Funcionalidades</h2>
 
-<div class="cards">
-    <h2>Habilidades</h2>
+    <section class="cards">
 
-<div class="cards">
-    {% for habilidade in habilidades %}
-        <div class="card">
-            {{ habilidade.emoji }}
+        <div class="card laranja">
+            <span class="icone">🏃</span>
+            <h3>Registrar atividades</h3>
+            <p>Envie seus treinos, corridas, pedaladas e outras atividades para validação.</p>
+        </div>
+
+        <div class="card azul">
+            <span class="icone">👥</span>
+            <h3>Grupos de amigos</h3>
+            <p>Participe de grupos e acompanhe o desempenho dos seus amigos.</p>
+        </div>
+
+        <div class="card roxo">
+            <span class="icone">🏆</span>
+            <h3>Ranking</h3>
+            <p>Ganhe pontos e suba na classificação semanal do seu grupo.</p>
+        </div>
+
+        <div class="card verde">
+            <span class="icone">🔥</span>
+            <h3>Sequência</h3>
+            <p>Mantenha sua rotina ativa e acompanhe seus dias de consistência.</p>
+        </div>
+
+    </section>
+
+    <section class="como-funciona">
+
+        <h2 class="section-title">Como funciona</h2>
+
+        <div class="passos">
+
+            <div class="passo">
+                <div class="numero">1</div>
+                <h3>Envie sua atividade</h3>
+                <p>Registre o treino realizado com tipo, duração, pontos e comprovação.</p>
+            </div>
+
+            <div class="passo">
+                <div class="numero">2</div>
+                <h3>Ganhe pontos</h3>
+                <p>Após a validação, sua atividade soma pontos ao seu perfil.</p>
+            </div>
+
+            <div class="passo">
+                <div class="numero">3</div>
+                <h3>Compita com amigos</h3>
+                <p>Entre no ranking do grupo e acompanhe sua evolução semanal.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <h2 class="section-title">Níveis de habilidade</h2>
+
+    <section class="habilidades-grid">
+
+        {% for habilidade in habilidades %}
+
+        <div class="habilidade">
+            <span class="emoji">{{ habilidade.emoji }}</span>
             <h3>{{ habilidade.nome }}</h3>
             <p>{{ habilidade.descricao }}</p>
         </div>
-    {% endfor %}
+
+        {% endfor %}
+
+    </section>
+
+    <section class="cta">
+        <h2>Pronto para começar?</h2>
+
+        <p>
+            Entre no Move Together e transforme sua rotina de treinos em uma competição saudável.
+        </p>
+
+        <a href="/login/" class="btn">Entrar no app</a>
+    </section>
+
 </div>
 
-    
-
-    
-
-</div>
 </body>
 </html>

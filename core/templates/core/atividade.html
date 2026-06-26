@@ -5,83 +5,299 @@
     <title>Enviar Atividade | Move Together</title>
 
     <style>
-        body{
+        *{
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            background: #f4f6f9;
+            box-sizing: border-box;
+        }
+
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0f172a;
+            color: white;
         }
 
         nav{
-            background-color: #111827;
-            padding: 16px 30px;
+            background: #111827;
             display: flex;
-            gap: 24px;
             justify-content: center;
             align-items: center;
+            gap: 30px;
+            padding: 18px;
             flex-wrap: wrap;
+            border-bottom: 1px solid #1f2937;
         }
 
         nav a{
-            color: white;
+            color: #d1d5db;
             text-decoration: none;
             font-weight: bold;
             font-size: 16px;
+            transition: .3s;
         }
 
         nav a:hover{
-            color: #60a5fa;
+            color: #f97316;
         }
 
-        .atividade-box{
-            width: 450px;
-            margin: 50px auto;
-            background: white;
-            padding: 35px;
-            border-radius: 15px;
-            box-shadow: 0px 2px 10px rgba(0,0,0,0.15);
+        .container{
+            width: 94%;
+            max-width: 1500px;
+            margin: 35px auto;
         }
 
-        h1{
+        .topo{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 35px;
+        }
+
+        .voltar{
+            color: white;
+            text-decoration: none;
+            font-size: 32px;
+            transition: .3s;
+        }
+
+        .voltar:hover{
+            color: #f97316;
+        }
+
+        .topo h1{
+            font-size: 32px;
+        }
+
+        .form-box{
+            background: #111827;
+            border: 1px solid #334155;
+            border-radius: 26px;
+            padding: 32px;
+        }
+
+        .mensagem{
+            background: rgba(16,185,129,.15);
+            border: 1px solid #10b981;
+            color: #86efac;
+            padding: 16px;
+            border-radius: 16px;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+
+        .secao{
+            margin-bottom: 34px;
+        }
+
+        .secao h2{
+            font-size: 22px;
+            margin-bottom: 18px;
+        }
+
+        .comprovacao-grid{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .opcao{
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 18px;
+            padding: 26px;
             text-align: center;
-            color: #111827;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .opcao:hover{
+            border-color: #f97316;
+            transform: translateY(-3px);
+        }
+
+        .opcao.ativa{
+            border-color: #f97316;
+            background: rgba(249,115,22,.18);
+        }
+
+        .opcao span{
+            display: block;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .upload-box{
+            border: 2px dashed #f97316;
+            border-radius: 24px;
+            padding: 60px 20px;
+            text-align: center;
+            background: rgba(30,41,59,.55);
+        }
+
+        .upload-icon{
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 18px;
+            border-radius: 50%;
+            background: #1e293b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 42px;
+        }
+
+        .upload-box h3{
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .upload-box p{
+            color: #94a3b8;
+        }
+
+        .modalidades{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .modalidade-input{
+            display: none;
+        }
+
+        .modalidade-card{
+            display: block;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 18px;
+            padding: 26px;
+            text-align: center;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .modalidade-card:hover{
+            border-color: #f97316;
+            transform: translateY(-3px);
+        }
+
+        .modalidade-input:checked + .modalidade-card{
+            border-color: #f97316;
+            background: rgba(249,115,22,.18);
+        }
+
+        .modalidade-card span{
+            display: block;
+            font-size: 34px;
+            margin-bottom: 10px;
         }
 
         label{
             font-weight: bold;
             display: block;
-            margin-top: 20px;
+            margin-bottom: 10px;
         }
 
-        input, select{
+        input,
+        textarea{
             width: 100%;
-            padding: 12px;
-            margin-top: 8px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            box-sizing: border-box;
+            background: #1e293b;
+            border: 1px solid #334155;
+            color: white;
+            border-radius: 18px;
+            padding: 18px;
+            font-size: 17px;
+            outline: none;
         }
 
-        button{
+        input:focus,
+        textarea:focus{
+            border-color: #f97316;
+        }
+
+        textarea{
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .linha-dupla{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .intensidade{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .intensidade input{
+            display: none;
+        }
+
+        .intensidade label{
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 18px;
+            padding: 18px;
+            text-align: center;
+            cursor: pointer;
+            color: #cbd5e1;
+            transition: .3s;
+        }
+
+        .intensidade input:checked + label{
+            border-color: #f97316;
+            color: #f97316;
+            background: rgba(249,115,22,.18);
+        }
+
+        .validacao{
+            background: rgba(6,182,212,.12);
+            border: 1px solid #06b6d4;
+            border-radius: 18px;
+            padding: 20px;
+            color: #cbd5e1;
+            margin-bottom: 30px;
+        }
+
+        .validacao strong{
+            color: #22d3ee;
+        }
+
+        .btn-submit{
             width: 100%;
-            margin-top: 25px;
-            padding: 14px;
-            background: #2563eb;
+            background: #f97316;
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 22px;
+            padding: 20px;
+            font-size: 22px;
+            font-weight: bold;
             cursor: pointer;
-            font-size: 18px;
+            transition: .3s;
+            box-shadow: 0 15px 30px rgba(249,115,22,.25);
         }
 
-        .mensagem{
-            background: #dcfce7;
-            color: #166534;
-            padding: 12px;
-            border-radius: 8px;
-            text-align: center;
-            margin-bottom: 20px;
-            font-weight: bold;
+        .btn-submit:hover{
+            background: #fb923c;
+            transform: translateY(-3px);
+        }
+
+        @media(max-width: 900px){
+            .comprovacao-grid,
+            .modalidades,
+            .linha-dupla,
+            .intensidade{
+                grid-template-columns: 1fr;
+            }
+
+            .topo{
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -93,41 +309,155 @@
     <a href="/login/">Login</a>
     <a href="/dashboard/">Dashboard</a>
     <a href="/grupo/">Grupo</a>
-    <a href="/perfil/">Perfil</a>
     <a href="/atividade/">Atividade</a>
+    <a href="/perfil/">Perfil</a>
     <a href="/ranking/">Ranking</a>
 </nav>
 
-<div class="atividade-box">
+<div class="container">
 
-    <h1>Enviar Atividade</h1>
+    <div class="topo">
+        <a href="/dashboard/" class="voltar">←</a>
+        <h1>Registrar Atividade</h1>
+        <div></div>
+    </div>
 
-    {% if mensagem %}
-        <div class="mensagem">
-            {{ mensagem }}
-        </div>
-    {% endif %}
+    <div class="form-box">
 
-    <form method="POST">
-        {% csrf_token %}
+        {% if mensagem %}
+            <div class="mensagem">
+                {{ mensagem }}
+            </div>
+        {% endif %}
 
-        <label>Nome da atividade</label>
-        <input type="text" name="nome" placeholder="Ex: Corrida no parque">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
 
-        <label>Tipo de atividade</label>
-        <select name="tipo">
-            <option>Corrida</option>
-            <option>Academia</option>
-            <option>Natação</option>
-            <option>Ciclismo</option>
-            <option>Luta</option>
-        </select>
+            <section class="secao">
+                <h2>Tipo de Comprovação</h2>
 
-        <label>Pontos</label>
-        <input type="number" name="pontos" placeholder="Ex: 150">
+                <div class="comprovacao-grid">
+                    <div class="opcao ativa">
+                        <span>📸</span>
+                        <strong>Foto</strong>
+                    </div>
 
-        <button type="submit">Enviar atividade</button>
-    </form>
+                    <div class="opcao">
+                        <span>🎥</span>
+                        <strong>Vídeo</strong>
+                    </div>
+
+                    <div class="opcao">
+                        <span>🖼️</span>
+                        <strong>Galeria</strong>
+                    </div>
+                </div>
+            </section>
+
+            <section class="secao">
+                <div class="upload-box">
+                    <div class="upload-icon">📷</div>
+                    <h3>Adicionar foto</h3>
+                    <p>Toque para selecionar uma comprovação da atividade</p>
+                </div>
+            </section>
+
+            <section class="secao">
+                <label>Nome da atividade</label>
+                <input type="text" name="nome" placeholder="Ex: Corrida na praia" required>
+            </section>
+
+            <section class="secao">
+                <h2>Modalidade</h2>
+
+                <div class="modalidades">
+
+                    <input class="modalidade-input" type="radio" name="tipo" id="crossfit" value="Crossfit" checked>
+                    <label class="modalidade-card" for="crossfit">
+                        <span>🏋️</span>
+                        Crossfit
+                    </label>
+
+                    <input class="modalidade-input" type="radio" name="tipo" id="corrida" value="Corrida">
+                    <label class="modalidade-card" for="corrida">
+                        <span>🏃</span>
+                        Corrida
+                    </label>
+
+                    <input class="modalidade-input" type="radio" name="tipo" id="ciclismo" value="Ciclismo">
+                    <label class="modalidade-card" for="ciclismo">
+                        <span>🚴</span>
+                        Ciclismo
+                    </label>
+
+                    <input class="modalidade-input" type="radio" name="tipo" id="yoga" value="Yoga">
+                    <label class="modalidade-card" for="yoga">
+                        <span>🧘</span>
+                        Yoga
+                    </label>
+
+                    <input class="modalidade-input" type="radio" name="tipo" id="natacao" value="Natação">
+                    <label class="modalidade-card" for="natacao">
+                        <span>🏊</span>
+                        Natação
+                    </label>
+
+                    <input class="modalidade-input" type="radio" name="tipo" id="futebol" value="Futebol">
+                    <label class="modalidade-card" for="futebol">
+                        <span>⚽</span>
+                        Futebol
+                    </label>
+
+                </div>
+            </section>
+
+            <section class="secao">
+                <label>Descrição da atividade</label>
+                <textarea name="descricao" placeholder="Descreva seu treino..."></textarea>
+            </section>
+
+            <section class="secao linha-dupla">
+                <div>
+                    <label>⏱️ Duração (minutos)</label>
+                    <input type="number" name="duracao" value="30">
+                </div>
+
+                <div>
+                    <label>⚡ Pontos</label>
+                    <input type="number" name="pontos" value="50">
+                </div>
+            </section>
+
+            <section class="secao">
+                <h2>Intensidade</h2>
+
+                <div class="intensidade">
+                    <input type="radio" name="intensidade" id="leve" value="Leve">
+                    <label for="leve">Leve</label>
+
+                    <input type="radio" name="intensidade" id="moderada" value="Moderada" checked>
+                    <label for="moderada">Moderada</label>
+
+                    <input type="radio" name="intensidade" id="intensa" value="Intensa">
+                    <label for="intensa">Intensa</label>
+                </div>
+            </section>
+
+            <div class="validacao">
+                <strong>✓ Validação Automática</strong>
+                <p>
+                    Sua atividade será validada pelos membros do grupo em até 24 horas.
+                    Após validação, você receberá os pontos.
+                </p>
+            </div>
+
+            <button type="submit" class="btn-submit">
+                Enviar para Validação
+            </button>
+
+        </form>
+
+    </div>
 
 </div>
 
