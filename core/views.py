@@ -12,7 +12,7 @@ def home(request):
     return render(request, 'core/home.html', {"habilidades": habilidades})
 
 def login(request):
-    return render(request, 'core/login.html')
+    return render(request, 'registration/login.html')
 
 def dashboard(request):
     return render(request, 'core/dashboard.html')
