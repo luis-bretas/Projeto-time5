@@ -14,33 +14,37 @@
 
         body{
             font-family: Arial, Helvetica, sans-serif;
-            background:#f4f6f9;
+            background:#0f172a
+            color:white;
         }
 
         nav{
-            background:#111827;
-            display:flex;
-            justify-content:center;
-            gap:30px;
-            padding:18px;
-            flex-wrap:wrap;
-        }
+    background:#111827;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:35px;
+    padding:22px;
+    flex-wrap:wrap;
+    border-bottom:1px solid #1f2937;
+}
 
         nav a{
-            color:white;
-            text-decoration:none;
-            font-weight:bold;
-            transition:.3s;
-        }
+    color:#d1d5db;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:17px;
+    transition:.3s;
+}
 
         nav a:hover{
-            color:#60a5fa;
+            color:#f97316;
         }
 
         .container{
-            width:90%;
-            max-width:1200px;
-            margin:40px auto;
+            width:94%;
+            max-width:1600px;
+            margin:35px auto;
         }
 
         {% block css %}
