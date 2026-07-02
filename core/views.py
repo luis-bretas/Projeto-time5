@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from movetogether.forms import ActivityForm
-from .models import Activity
+from .models import Activity, Group
 def home(request):
     habilidades = [
         {"emoji": "⭐", "nome": "Iniciante", "descricao": "Até 500 pontos"},
@@ -68,8 +68,24 @@ def atividade(request):
         nome = request.POST.get("nome")
         tipo = request.POST.get("tipo")
         pontos = request.POST.get("pontos")
+        descricao = request.POST.get("descricao")
+        duracao = request.POST.get("duracao")
 
-        mensagem = f"Atividade '{nome}' enviada com sucesso! (+{pontos} pontos)"
+        grupo = Group.objects.first()
+
+        if request.user.is_authenticated and grupo:
+            Activity.objects.create(
+                user=request.user,
+                group=grupo,
+                description=descricao or nome,
+                duration_minutes=duracao or 0,
+                points_earned=pontos or 0
+            )
+
+            mensagem = f"Atividade '{nome}' enviada e salva no banco com sucesso! (+{pontos} pontos)"
+
+        else:
+            mensagem = "Erro: é necessário estar logado e ter um grupo cadastrado."
 
     return render(
         request,
