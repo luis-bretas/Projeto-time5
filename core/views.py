@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from movetogether.forms import ActivityForm
+from .models import Activity
 def home(request):
     habilidades = [
         {"emoji": "⭐", "nome": "Iniciante", "descricao": "Até 500 pontos"},
@@ -15,7 +16,13 @@ def login(request):
     return render(request, 'registration/login.html')
 
 def dashboard(request):
-    return render(request, 'core/dashboard.html')
+    atividades = Activity.objects.all().order_by('-created_at')
+
+    return render(
+        request,
+        'core/dashboard.html',
+        {"atividades": atividades}
+    )
 
 def grupo(request):
 

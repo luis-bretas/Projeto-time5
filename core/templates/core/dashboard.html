@@ -313,13 +313,26 @@
     <section class="atividades">
         <h2>Atividades Recentes</h2>
 
-        <div class="atividade-item">
-            <div class="atividade-info">
-                <strong>🏃 Ana Silva</strong>
-                <span>Corrida - 5km • há 2h</span>
-            </div>
-            <div class="pontos">⚡ +50</div>
-        </div>
+        {% for atividade in atividades %}
+
+<div class="atividade-item">
+    <div class="atividade-info">
+        <strong>🏃 {{ atividade.user.username }}</strong>
+        <span>
+            {{ atividade.description }} • {{ atividade.duration_minutes }} min
+        </span>
+    </div>
+
+    <div class="pontos">
+        ⚡ +{{ atividade.points_earned }}
+    </div>
+</div>
+
+{% empty %}
+
+<p>Nenhuma atividade cadastrada ainda.</p>
+
+{% endfor %}
 
         <div class="atividade-item">
             <div class="atividade-info">
