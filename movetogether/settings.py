@@ -20,12 +20,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-j-8@ll@ets7tu9t=b*k30_!60bd1&v_m8ihak6k#9qtdr4i9$a'
+SECRET_KEY = os.environ.get(
+    'SECRET_KEY',
+    'django-insecure-j-8@ll@ets7tu9t-b*k3O_!60bd1&v_m8ihak6k#9qtdr4i9$a'
+)
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+    '.onrender.com',
+]
 
 
 # Application definition
@@ -43,6 +49,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -116,7 +123,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'movetogether' / 'static',
+]
 LOGOUT_REDIRECT_URL = '/accounts/login/'  # Para onde vai após logout
 LOGIN_URL = '/accounts/login/'       # URL de login (padrão)
 # ATENÇÃO!!! Troque o valor da variável abaixo para que ela seja uma das rotas
@@ -124,8 +137,8 @@ LOGIN_URL = '/accounts/login/'       # URL de login (padrão)
 LOGIN_REDIRECT_URL = '/dashboard/'   # Para onde vai após login
 CORS_ALLOW_ALL_ORIGINS = True
 CSRF_TRUSTED_ORIGINS = [
-    'https://localhost:8000', 
     'http://localhost:8000',
+    'http://127.0.0.1:8000',
 ]
 # Configurações para arquivos de mídia
 MEDIA_URL = '/media/'

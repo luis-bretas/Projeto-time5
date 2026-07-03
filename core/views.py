@@ -18,7 +18,7 @@ def home(request):
 
 def login(request):
     return render(request, 'registration/login.html')
-
+@login_required
 def dashboard(request):
 
     usuario = request.user
@@ -93,7 +93,7 @@ def grupo(request):
             "ranking_usuarios": ranking_usuarios,
         }
     )
-
+@login_required
 def perfil(request):
 
     usuario = request.user
@@ -140,7 +140,7 @@ def ranking(request):
         'core/ranking.html',
         {"ranking_usuarios": ranking_usuarios}
     )
-
+@login_required
 def atividade(request):
 
     mensagem = ""
