@@ -62,14 +62,37 @@ def grupo(request):
     )
 
 def perfil(request):
-    usuario = {
-        "nome": "Luís",
-        "pontos": 1250,
-        "nivel": "Intermediário",
-        "esporte": "Academia"
-    }
 
-    return render(request, 'core/perfil.html', {"usuario": usuario})
+    usuario = request.user
+
+    atividades = Activity.objects.filter(
+        user=usuario
+    ).order_by('-created_at')
+
+    total_pontos = atividades.aggregate(
+        total=Sum('points_earned')
+    )['total'] or 0
+
+    total_treinos = atividades.count()
+
+    total_grupos = atividades.values('group').distinct().count()
+
+    dias_ativos = len(set(
+        atividade.created_at.date() for atividade in atividades
+    ))
+
+    return render(
+        request,
+        'core/perfil.html',
+        {
+            "usuario": usuario,
+            "atividades": atividades,
+            "total_pontos": total_pontos,
+            "total_treinos": total_treinos,
+            "total_grupos": total_grupos,
+            "dias_ativos": dias_ativos,
+        }
+    )
 
 def ranking(request):
 

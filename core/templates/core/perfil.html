@@ -297,15 +297,14 @@
             </div>
 
             <div class="perfil-info">
-                <h1>{{ usuario.nome }}</h1>
-                <span>@{{ usuario.nome|lower }}</span>
+                <h1>{{ usuario.username }}</h1>
+               <span>@{{ usuario.username }}</span>
             </div>
 
         </div>
 
         <p class="perfil-descricao">
-            Apaixonado por fitness 💪 • {{ usuario.esporte }} • Nível {{ usuario.nivel }}
-        </p>
+Apaixonado por fitness 💪 • Move Together • Usuário ativo        </p>
 
         <div class="perfil-actions">
             <a href="#" class="btn btn-orange">Editar Perfil</a>
@@ -318,26 +317,25 @@
 
         <div class="stat-card laranja">
             <span class="icone">🎯</span>
-            <h2>45</h2>
-            <p>Treinos</p>
+<h2>{{ total_treinos }}</h2>            <p>Treinos</p>
         </div>
 
         <div class="stat-card azul">
             <span class="icone">⚡</span>
-            <h2>{{ usuario.pontos }}</h2>
+            <h2>{{ total_pontos }}</h2>
             <p>Pontos</p>
         </div>
 
         <div class="stat-card roxo">
             <span class="icone">👥</span>
-            <h2>4</h2>
+            <h2>{{ total_grupos }}</h2>
             <p>Grupos</p>
         </div>
 
         <div class="stat-card verde">
             <span class="icone">🔥</span>
-            <h2>12d</h2>
-            <p>Sequência</p>
+            <h2>{{ dias_ativos }}d</h2>
+            <p>Dias ativos</p>
         </div>
 
     </section>
@@ -376,33 +374,22 @@
 
         <h2>🏆 Atividades Recentes</h2>
 
-        <div class="atividade-item">
-            <div class="atividade-info">
-                <strong>🏋️ Crossfit</strong>
-                <span>Hoje às 07:30 • 45 min</span>
-            </div>
-            <div class="pontos">⚡ +50</div>
-        </div>
+        {% for atividade in atividades %}
 
-        <div class="atividade-item">
-            <div class="atividade-info">
-                <strong>🏃 Corrida</strong>
-                <span>Ontem às 06:00 • 30 min</span>
-            </div>
-            <div class="pontos">⚡ +40</div>
-        </div>
+<div class="atividade-item">
+    <div class="atividade-info">
+        <strong>🏃 {{ atividade.description }}</strong>
+        <span>{{ atividade.duration_minutes }} min • {{ atividade.created_at|date:"d/m/Y H:i" }}</span>
+    </div>
 
-        <div class="atividade-item">
-            <div class="atividade-info">
-                <strong>🧘 Yoga</strong>
-                <span>2 dias atrás • 60 min</span>
-            </div>
-            <div class="pontos">⚡ +45</div>
-        </div>
-
-    </section>
-
+    <div class="pontos">⚡ +{{ atividade.points_earned }}</div>
 </div>
+
+{% empty %}
+
+<p>Nenhuma atividade cadastrada ainda.</p>
+
+{% endfor %}
 
 </body>
 </html>
