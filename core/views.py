@@ -20,12 +20,45 @@ def login(request):
     return render(request, 'registration/login.html')
 
 def dashboard(request):
+
+    usuario = request.user
+    grupo = Group.objects.first()
+
     atividades = Activity.objects.all().order_by('-created_at')
+
+    atividades_usuario = Activity.objects.filter(user=usuario)
+
+    total_pontos = atividades_usuario.aggregate(
+        total=Sum('points_earned')
+    )['total'] or 0
+
+    dias_ativos = len(set(
+        atividade.created_at.date() for atividade in atividades_usuario
+    ))
+
+    ranking_usuarios = User.objects.annotate(
+        total_pontos=Sum('activities__points_earned')
+    ).filter(
+        total_pontos__isnull=False
+    ).order_by('-total_pontos')
+
+    posicao = "-"
+
+    for indice, user in enumerate(ranking_usuarios, start=1):
+        if user == usuario:
+            posicao = f"{indice}º"
 
     return render(
         request,
         'core/dashboard.html',
-        {"atividades": atividades}
+        {
+            "usuario": usuario,
+            "atividades": atividades,
+            "total_pontos": total_pontos,
+            "dias_ativos": dias_ativos,
+            "posicao": posicao,
+            "grupo": grupo,
+        }
     )
 
 def grupo(request):

@@ -259,8 +259,7 @@
     <section class="topo">
         <div>
             <p>Bem-vindo(a)</p>
-            <h1>Luís Mendes</h1>
-        </div>
+<h1>{{ usuario.username }}</h1>        </div>
 
         <div class="notificacao">🔔</div>
     </section>
@@ -269,26 +268,36 @@
 
         <div class="status-card laranja">
             <span>🏆 Posição</span>
-            <h2>2º</h2>
-        </div>
+<h2>{{ posicao }}</h2>        </div>
 
         <div class="status-card azul">
             <span>⚡ Pontos</span>
-            <h2>340</h2>
+            <h2>{{ total_pontos }}</h2>
         </div>
 
         <div class="status-card roxo">
-            <span>🔥 Sequência</span>
-            <h2>7d</h2>
+            <span>🔥 Dias ativos</span>
+            <h2>{{ dias_ativos }}d</h2>
         </div>
 
     </section>
 
     <section class="desafio">
         <small>🎯 Desafio da Semana</small>
-        <h2>Guerreiros do Crossfit</h2>
-        <p>5 treinos restantes • Termina em 3 dias</p>
-
+        <h2>
+    {% if grupo %}
+        {{ grupo.name }}
+    {% else %}
+        Nenhum grupo cadastrado
+    {% endif %}
+</h2>
+<p>
+    {% if grupo %}
+        {{ grupo.description }}
+    {% else %}
+        Cadastre um grupo no painel administrativo.
+    {% endif %}
+</p>
         <div class="progress">
             <div class="progress-bar"></div>
         </div>
@@ -334,21 +343,6 @@
 
 {% endfor %}
 
-        <div class="atividade-item">
-            <div class="atividade-info">
-                <strong>🏋️ Pedro Costa</strong>
-                <span>Musculação - 1h • há 4h</span>
-            </div>
-            <div class="pontos">⚡ +40</div>
-        </div>
-
-        <div class="atividade-item">
-            <div class="atividade-info">
-                <strong>🏊 Mariana Lima</strong>
-                <span>Natação - 40min • ontem</span>
-            </div>
-            <div class="pontos">⚡ +35</div>
-        </div>
 
     </section>
 
