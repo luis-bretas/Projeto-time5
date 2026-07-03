@@ -5,6 +5,7 @@ from movetogether.forms import ActivityForm
 from .models import Activity, Group
 from django.contrib.auth.models import User
 from django.db.models import Sum
+from django.contrib.auth import logout
 
 
 def home(request):
@@ -174,3 +175,6 @@ def atividade(request):
         'core/atividade.html',
         {"mensagem": mensagem}
     )
+def sair(request):
+    logout(request)
+    return redirect('/login/')

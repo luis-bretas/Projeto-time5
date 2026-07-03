@@ -161,21 +161,21 @@
     <h1>Bem-vindo de volta!</h1>
     <p class="subtitle">Sua dose diária de movimento começa aqui</p>
 
-    <form method="post" >
-        {% csrf_token %}
-        
-        <div class="form-group">
-            <span class="input-icon">📧</span>
-            <input type="text" name="username" class="form-control" placeholder="username" required>
-        </div>
+    <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
 
-        <div class="form-group">
-            <span class="input-icon">🔒</span>
-            <input type="password" name="password" class="form-control" placeholder="Senha" required>
-        </div>
+    <div class="form-group">
+        <span class="input-icon">▣</span>
+        <input type="text" name="username" class="form-control" placeholder="username" required>
+    </div>
 
-        <button type="submit" class="btn-login">Entrar</button>
-    </form>
+    <div class="form-group">
+        <span class="input-icon">🔒</span>
+        <input type="password" name="password" class="form-control" placeholder="Senha" required>
+    </div>
+
+    <button type="submit" class="btn-login">Entrar</button>
+</form>
 
     
 </div>
