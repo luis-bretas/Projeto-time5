@@ -252,7 +252,7 @@
 
     <section class="ranking-list">
 
-        {% for jogador in jogadores %}
+        {% for usuario in ranking_usuarios %}
 
         <div class="ranking-card">
 
@@ -264,12 +264,12 @@
                 {% elif forloop.counter == 3 %}
                     🥉
                 {% else %}
-                    {{ jogador.posicao }}
+                    {{ forloop.counter }}º
                 {% endif %}
             </div>
 
             <div class="usuario">
-                <h2>{{ jogador.nome }}</h2>
+                <h2>{{ usuario.username }}</h2>
                 <span>Participante ativo do Move Together</span>
 
                 <div class="barra">
@@ -278,7 +278,7 @@
             </div>
 
             <div class="pontos">
-                <strong>{{ jogador.pontos }}</strong>
+                <strong>{{ usuario.total_pontos }}</strong>
                 <span>pontos</span>
             </div>
 

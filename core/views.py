@@ -72,14 +72,18 @@ def perfil(request):
     return render(request, 'core/perfil.html', {"usuario": usuario})
 
 def ranking(request):
-    jogadores = [
-        {"posicao": "1º", "nome": "Theo", "pontos": 1500},
-        {"posicao": "2º", "nome": "Luís", "pontos": 1250},
-        {"posicao": "3º", "nome": "Ana", "pontos": 980},
-        {"posicao": "4º", "nome": "João", "pontos": 700},
-    ]
 
-    return render(request, 'core/ranking.html', {"jogadores": jogadores})
+    ranking_usuarios = User.objects.annotate(
+        total_pontos=Sum('activities__points_earned')
+    ).filter(
+        total_pontos__isnull=False
+    ).order_by('-total_pontos')
+
+    return render(
+        request,
+        'core/ranking.html',
+        {"ranking_usuarios": ranking_usuarios}
+    )
 
 def atividade(request):
 
