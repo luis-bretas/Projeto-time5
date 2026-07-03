@@ -3,6 +3,10 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from movetogether.forms import ActivityForm
 from .models import Activity, Group
+from django.contrib.auth.models import User
+from django.db.models import Sum
+
+
 def home(request):
     habilidades = [
         {"emoji": "⭐", "nome": "Iniciante", "descricao": "Até 500 pontos"},
@@ -26,17 +30,35 @@ def dashboard(request):
 
 def grupo(request):
 
-    membros = [
-        "Theo",
-        "Luís",
-        "Ana",
-        "João"
-    ]
+    grupo = Group.objects.first()
+
+    if grupo:
+        atividades = Activity.objects.filter(group=grupo).order_by('-created_at')
+    else:
+        atividades = Activity.objects.none()
+
+    membros = User.objects.all()
+
+    total_pontos = atividades.aggregate(
+        total=Sum('points_earned')
+    )['total'] or 0
+
+    ranking_usuarios = User.objects.filter(
+        activities__group=grupo
+    ).annotate(
+        total_pontos=Sum('activities__points_earned')
+    ).order_by('-total_pontos')
 
     return render(
         request,
         'core/grupo.html',
-        {"membros": membros}
+        {
+            "grupo": grupo,
+            "atividades": atividades,
+            "membros": membros,
+            "total_pontos": total_pontos,
+            "ranking_usuarios": ranking_usuarios,
+        }
     )
 
 def perfil(request):

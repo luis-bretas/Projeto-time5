@@ -281,11 +281,20 @@
     <section class="grupo-header">
         <small>🏆 Grupo ativo</small>
 
-        <h1>Grupo Alpha</h1>
+        <h1>
+    {% if grupo %}
+        {{ grupo.name }}
+    {% else %}
+        Nenhum grupo cadastrado
+    {% endif %}
+</h1>
 
         <p>
-            Grupo focado em desafios de corrida, academia e condicionamento físico.
-            Complete atividades, acumule pontos e suba no ranking semanal.
+           {% if grupo %}
+    {{ grupo.description }}
+{% else %}
+    Cadastre um grupo no painel administrativo para exibir as informações aqui.
+{% endif %}
         </p>
 
         <div class="grupo-actions">
@@ -298,12 +307,12 @@
 
         <div class="status-card azul">
             <span>👥 Membros</span>
-            <h2>4</h2>
+            <h2>{{ membros.count }}</h2>
         </div>
 
         <div class="status-card roxo">
             <span>⚡ Pontos do grupo</span>
-            <h2>4.210</h2>
+            <h2>{{ total_pontos|floatformat:0 }}</h2>
         </div>
 
         <div class="status-card verde">
@@ -319,19 +328,22 @@
             <h2>Membros do Grupo</h2>
 
             <div class="membros">
+{% for membro in membros %}
 
-                {% for membro in membros %}
+<div class="membro">
+    <div class="avatar">🏃</div>
 
-                <div class="membro">
-                    <div class="avatar">🏃</div>
+    <div class="membro-info">
+        <h3>{{ membro.username }}</h3>
+        <p>{{ membro.email }}</p>
+    </div>
+</div>
 
-                    <div class="membro-info">
-                        <h3>{{ membro }}</h3>
-                        <p>Membro ativo do grupo</p>
-                    </div>
-                </div>
+{% empty %}
 
-                {% endfor %}
+<p>Nenhum membro cadastrado ainda.</p>
+
+{% endfor %}
 
             </div>
         </div>
@@ -339,44 +351,56 @@
         <div class="box">
             <h2>Ranking Interno</h2>
 
-            <div class="ranking-item">
-                <strong>🥇 Theo</strong>
-                <span class="pontos">1500 pts</span>
-            </div>
+           {% for usuario in ranking_usuarios %}
 
-            <div class="ranking-item">
-                <strong>🥈 Luís</strong>
-                <span class="pontos">1250 pts</span>
-            </div>
+<div class="ranking-item">
+    <strong>
+        {% if forloop.counter == 1 %}
+            🥇
+        {% elif forloop.counter == 2 %}
+            🥈
+        {% elif forloop.counter == 3 %}
+            🥉
+        {% else %}
+            {{ forloop.counter }}º
+        {% endif %}
 
-            <div class="ranking-item">
-                <strong>🥉 Ana</strong>
-                <span class="pontos">980 pts</span>
-            </div>
+        {{ usuario.username }}
+    </strong>
 
-            <div class="ranking-item">
-                <strong>4º João</strong>
-                <span class="pontos">700 pts</span>
+    <span class="pontos">{{ usuario.total_pontos }} pts</span>
+</div>
+
+{% empty %}
+
+<p>Nenhuma atividade registrada neste grupo ainda.</p>
+
+{% endfor %}
             </div>
         </div>
 
     </section>
 
     <section class="chat">
-        <h2>Chat do Grupo 💬</h2>
+    <h2>Atualizações do Grupo 💬</h2>
 
-        <div class="mensagem">
-            <strong>Ana Clara:</strong> enviei uma corrida de 8km hoje cedo. 🏃
-        </div>
+    {% for atividade in atividades %}
 
-        <div class="mensagem">
-            <strong>Theo:</strong> completei treino de academia e ganhei pontos. 🏋️
-        </div>
+    <div class="mensagem">
+        <strong>{{ atividade.user.username }}:</strong>
+        enviou uma atividade: {{ atividade.description }}.
+        Ganhou +{{ atividade.points_earned }} pontos. 🔥
+    </div>
 
-        <div class="mensagem">
-            <strong>Sistema:</strong> Luís ganhou +120 pontos hoje. 🔥
-        </div>
-    </section>
+    {% empty %}
+
+    <div class="mensagem">
+        Nenhuma atividade registrada no grupo ainda.
+    </div>
+
+    {% endfor %}
+
+</section>
 
 </div>
 
